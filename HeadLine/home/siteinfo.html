@@ -16,22 +16,13 @@
     	<div class="mainbox-left">
             <div class="siteinfo">
             	<h1 class="wtitle"><span style="float: right;"></span><a href="<{$web.web_furl}>" target="_blank" onclick="clickout(<{$web.web_id}>)"><{$web.web_name}></a></h1>
-				<ul class="wdata">
-					<li class="line"><em style="color: #f00;"><{$web.web_views}></em>人气指数</li>
-					<li class="line"><em style="color: #083;"><{$web.web_brank}></em>百度权重</li>
-					<li class="line"><em style="color: #083;"><{$web.web_r360}></em>360权重</li>
-					<li class="line"><em style="color: #083;"><{$web.web_srank}></em>搜狗权重</li>
-					<li class="line"><em style="color: #083;"><{$web.web_arank}></em>Alexa</li>
-					<li class="line"><em><{$web.web_instat}></em>入站次数</li>
-					<!-- <li class="line"><em><{$web.web_outstat}></em>出站次数</li> -->
-					<li class="line"><em><{$web.web_ctime}></em>收录日期</li>
-					<li><em style="color: #f60;"><{$web.web_utime}></em>更新日期</li>
-				</ul>
+
 				<div class="clearfix params">
 					<a href="<{$web.web_furl}>" target="_blank">
 					<img src="<{$web.web_pic}>" width="130" height="110" alt="<{$web.web_name}>" class="wthumb" /></a>
 					<ul class="siteitem">
-						<li><strong>网站地址：</strong>
+
+						<li>网站地址：
 						<a href="<{url('open',['id'=>$web.web_id])}>?url=<{$web.web_furl}>" target="_blank" class="visit" onclick="clickout(<{$web.web_id}>)">
 						<font color="#008000"><{$web.web_url}></font><span class="site-info-in">直达</span></a></li>
 						<li><strong>服务器IP：</strong><a href="http://ip.chinaz.com/?ip=<{$web.web_ip}>" target="_blank"><{$web.web_ip}></a></li>
@@ -50,10 +41,21 @@
                          	<{/if}>
                         	</li>
 
-						<li><strong>TAG标签：</strong><{$web.web_tags}></li>
+						<li><strong>网站关键字：</strong><{$web.web_tags}></li>
 						<li></li>
 					</ul>
 				</div>
+				<ul class="wdata">
+				    <li class="line"><em style="color: #f00;"><strong>SEO</em>指数</strong></li>
+					<li class="line"><em style="color: #083;"><{$web.web_brank}></em>百度权重</li>
+					<li class="line"><em style="color: #083;"><{$web.web_r360}></em>360权重</li>
+					<li class="line"><em style="color: #083;"><{$web.web_srank}></em>搜狗权重</li>
+					<li class="line"><em style="color: #083;"><{$web.web_arank}></em>Alexa</li>
+					<li class="line"><em><{$web.web_instat}></em>入站次数</li>
+					<!-- <li class="line"><em><{$web.web_outstat}></em>出站次数</li> -->
+					<li class="line"><em><{$web.web_ctime}></em>收录日期</li>
+					<li><em style="color: #f60;"><{$web.web_utime}></em>更新日期</li>
+				</ul>
 			</div>
 			<div class="blank10"></div>
 			<div class="clearfix relsite">

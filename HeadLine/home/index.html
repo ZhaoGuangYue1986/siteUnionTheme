@@ -14,9 +14,6 @@
 
 <ul>
 
-
-
-
 </ul>
 <div class="ad1200x90">
 <{get_adcode(20)}>
@@ -44,45 +41,37 @@
 
 
 	<div class="homebox">
-
-        <!--   付费快审  开始-->
-        <{if $cfg.home_pay >0}>
-        <div class="recommended">
-		<div class="main-top"><i class="fa fa-flag-o" aria-hidden="true"></i> 付费快审</div>
-		<ul class="index-top">
-		  <{foreach from=get_website_list("w.web_ispay = 1 and w.web_status = 3 ",'utime','desc',0,$cfg.home_pay) item=vo}>
-          <li id="dowebok" class="qq animated bounceInDown">
-            <a href="<{$vo.web_link}>" target="_blank"><{$vo.web_name}></a>
-          </li>
-		   	<{/foreach}>
-		</ul>
-		</div>
-		<{/if}>
-      <!-- 付费快审 结束-->
-
-        <!-- 权威推荐 开始-->
-        <{if $cfg.home_best >0}>
-        <div class="recommended">
-		<div class="main-top"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 权威推荐</div>
-		<ul class="index-top">
-		  <{foreach from= getTop($cfg.home_best) item=vo}>
-          <li id="dowebok" class="qq animated bounceInDown">
-            <a href="<{$vo.web_link}>" target="_blank"><{$vo.web_name}></a>
-          </li>
-		   	<{/foreach}>
-		</ul>
-		  <!-- 权威推荐 结束-->
-       </div>
-        <{/if}>
-    
-		<div class="blank10"></div>
-
-
-
+	<div class="blank10"></div>
 	<div class="homebox-right">
 		<div class="blank10"></div>
-		<!-- 推荐 -->
+				
+	    <!-- 付费快审 -->
+		<div class="coolbox">
 		<{if $cfg.home_new > '0'}>
+			<div class="inbox">
+				<div class="inbox-title"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>付费快审 </div>
+				<ul class="clearfix coolbox-inner">
+					<{nocache}>
+					<!--{foreach from=get_websites(0, <{$cfg.home_instat}>, false, 'instat') item=instat}-->
+					<{foreach from=get_website_list("w.web_ispay = 1 and w.web_status = 3 ",'utime','desc',0,$cfg.home_pay) item=instat}>
+					<a href="<{$instat.web_link}>" title="<{$instat.web_name}>">
+					 <li>
+					   <div class="coolbox-inner-top">
+						 <{$instat.web_name}>
+					  </div>
+					  <div class="coolbox-inner-bottom">
+						<span>人气<br> <{$instat.web_views}></span>&nbsp;<div class="intro"><{$instat.web_intro}></div>&nbsp;
+					  </div>  
+					</li>
+					</a>
+					<{/foreach}>
+					<{/nocache}>
+				</ul>
+			</div>
+			<div class="blank10"></div>
+		<{/if}>
+		</div>
+		<!-- 付费快审 结束 -->
 	    <!-- 最新收录 -->
 		<div class="coolbox">
 		<{if $cfg.home_new > '0'}>
@@ -109,10 +98,7 @@
 			<div class="blank10"></div>
 		<{/if}>
 		</div>
-		<!-- 站长推荐结束 -->
-		
-		
-		
+		<!-- 最新收录结束 -->
 		
 		<div class="blank10"></div>
 		<!-- 广告 开始 -->
@@ -121,7 +107,7 @@
 		</div> 
 		<!-- 广告 开始 -->
 		<div class="blank10"></div>
-		<{/if}>
+		
 		
 		<!-- 站长推荐 -->
 		<div class="coolbox">
