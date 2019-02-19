@@ -292,8 +292,8 @@ a.visit:hover{text-decoration:none;}
 
 /*站点统计*/
 .count{width:100%;overflow:hidden;margin-top:10px;height: 30px;}
-.count-title{float:left;width:100px;text-align:center;color:#605b5b;padding:5px;background:#f6f6f6;}
-.tj-list{float:left;overflow:hidden;width: 800px;}
+.count-title{float:left;width:90px;text-align:center;color:#605b5b;padding:5px;background:#f6f6f6;}
+.tj-list{float:left;overflow:hidden;width: 700px;}
 .tj-list li{height:30px;line-height:30px;margin-left:10px;float:left;color:#615f5f;}
 .tj-list li a{width:52px;text-align:center;font-size:16px;color:#3DB3F7;margin:0 auto;}
 .count-pay-money{height:30px;float:right;padding: 0px 10px;color:#fb7608;}

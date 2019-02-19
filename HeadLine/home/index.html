@@ -32,7 +32,12 @@
 				</ul>
 				<{if !empty($cfg.home_pay_money)}>
 				<div class="count-pay-money">
-				  快审服务: <{$cfg.home_pay_money}>元/站 
+				快审服务: <{$cfg.home_pay_money}>元/站 
+				<{foreach from=get_kefu() item=vo}>
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=<{$vo}>&site=qq&menu=yes"><img border="0" src="/public/images/qq/button_1.gif" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> 
+				<{/foreach}>
+				
+				
 				</div>
 				<{/if}>
 			</div>
