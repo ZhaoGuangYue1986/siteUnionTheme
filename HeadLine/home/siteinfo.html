@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title><{$site_title}></title>
+<meta name="Keywords" content="<{$site_keywords}>" />
+<meta name="Description" content="<{$site_description}>" />
+<meta name="Copyright" content="Powered By www.youke365.site" />
+<{include file="base.html"}>
+</head>
+<body>
+<{include file="topbar.html"}>
+<{include file="header.html"}>
+<div class="wrapper">
+	<div class="mainbox">
+    	<div class="mainbox-left">
+            <div class="siteinfo">
+            	<h1 class="wtitle"><span style="float: right;"></span><a href="<{$web.web_furl}>" target="_blank" onclick="clickout(<{$web.web_id}>)"><{$web.web_name}></a></h1>
+				<ul class="wdata">
+					<li class="line"><em style="color: #f00;"><{$web.web_views}></em>人气指数</li>
+					<li class="line"><em style="color: #083;"><{$web.web_brank}></em>百度权重</li>
+					<li class="line"><em style="color: #083;"><{$web.web_r360}></em>360权重</li>
+					<li class="line"><em style="color: #083;"><{$web.web_srank}></em>搜狗权重</li>
+					<li class="line"><em style="color: #083;"><{$web.web_arank}></em>Alexa</li>
+					<li class="line"><em><{$web.web_instat}></em>入站次数</li>
+					<!-- <li class="line"><em><{$web.web_outstat}></em>出站次数</li> -->
+					<li class="line"><em><{$web.web_ctime}></em>收录日期</li>
+					<li><em style="color: #f60;"><{$web.web_utime}></em>更新日期</li>
+				</ul>
+				<div class="clearfix params">
+					<a href="<{$web.web_furl}>" target="_blank">
+					<img src="<{$web.web_pic}>" width="130" height="110" alt="<{$web.web_name}>" class="wthumb" /></a>
+					<ul class="siteitem">
+						<li><strong>网站地址：</strong>
+						<a href="<{url('open',['id'=>$web.web_id])}>?url=<{$web.web_furl}>" target="_blank" class="visit" onclick="clickout(<{$web.web_id}>)">
+						<font color="#008000"><{$web.web_url}></font><span class="site-info-in">直达</span></a></li>
+						<li><strong>服务器IP：</strong><a href="http://ip.chinaz.com/?ip=<{$web.web_ip}>" target="_blank"><{$web.web_ip}></a></li>
+						<li><strong>网站描述：</strong><span style="line-height: 23px;"><{$web.web_intro}></span></li>
+						<{if $user.user_qq != ''}>
+						<li><strong>联系站长：</strong>
+						<!-- <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{$user.user_qq}>&amp;site=<{$user.nick_name}>&amp;menu=yes" target="_blank"><img border="0" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:<{$user.user_qq}>:46"></a> -->
+                         <a title="点击这里给联系我" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{$user.user_qq}>&amp;site=localhost&amp;menu=yes" target="_blank">
+                         <img src="http://pub.idqqimg.com/qconn/wpa/button/button_11.gif"></a>
+						</li><{else}>
+
+						<{/if}>
+						<li><strong>网站状态：</strong>
+                        	<{if $user.user_qq != ''}>
+                        	已认领<{else}>未认领<a href="<{url('member/claim')}>?url=<{$web.web_url}>" class="site-info-in">认领</a>
+                         	<{/if}>
+                        	</li>
+
+						<li><strong>TAG标签：</strong><{$web.web_tags}></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			<div class="blank10"></div>
+			<div class="clearfix relsite">
+				<div class="relsite-title">相关站点</div>
+				<ul class="relsite-list">
+              		<{foreach from=$related_website item=rel}>
+               		<li><a href="<{$rel.web_link}>" target="_blank" title="<{$rel.web_name}>">
+               			<img src="<{$rel.web_pic}>" width="100" height="80" alt="<{$rel.web_name}>" /><p><{$rel.web_name}></p></a></li>
+               		<{/foreach}>
+				</ul>
+			</div>
+			<div class="blank10"></div>
+
+			
+				<{if $cfg.is_enabled_comment == 1}>	
+						<!-- 畅言评论 开始 -->
+				  <div class="comment-form">
+							     <!--PC版-->
+							<div id="SOHUCS" sid="<{$web.web_id}>"></div>
+							<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+							<script type="text/javascript">
+							window.changyan.api.config({
+							appid: "<{$cfg.changyan_appid}>",
+							conf: "<{$cfg.changyan_conf}>"
+							});
+							</script>
+			     </div>
+			   	   <!-- 畅言评论结束   -->
+			     <{else}>
+
+			        <!-- <h3 class="newbox-title">发表评论</h3> -->
+
+		<!-- 			 <div class="comment-form">
+					    <div class="commentimg">
+					       <img src="http://www.gravatar.com/avatar/<{$com.email|md5}>?s=50&d=mm&r=g0" alt="<{$com.nick}>">
+					    </div>
+						<ul class="formbox" style="padding-left:0px;padding-top:20px;">
+						<form name="cform" id="comment" method="post" action="">
+							<li><strong><font color="#ff0000">*</font> 评论内容：</strong><textarea name="content" id="content" cols="105" rows="5" class="youke_content"></textarea></li>
+							<li><strong>&nbsp;</strong><input type="button" id="button" class="layui-btn layui-btn-primary youke_fb" data-id="<{$web.web_id}>" data-type="comment" data-mod="webdir" value="发表评论" ></li>
+						</form>
+						</ul>
+					</div>
+			         <div class="blank10"></div>
+                   <div class="comment">
+					<h3>
+					    <em>精彩评论</em>
+					</h3> -->
+					<!-- <ul class="comment-list">
+						<{foreach from=$comments item=com name=comlist}>
+						<li>
+							<div class="comment-gravatar">
+								<img src="http://www.gravatar.com/avatar/<{$com.email|md5}>?s=50&d=mm&r=g0" alt="<{$com.nick}>"> -->
+								                  
+	                            <!-- <div class="comment-title">
+	                                <em><{$smarty.foreach.comlist.iteration}>楼 <{$com.nick}></em>
+	                            　  <time><{$com.time}></time>
+	                                <div class="youkecomment">
+	                             	  <{$com.content}>
+	                                </div>
+	                            </div> -->
+	                            <!-- 回复 -->
+	                     <!--        <div class="comment-text"><a href="#comment" style="float: right;" onClick="$('#rid').val(<{$com.comment_id}>);">回复</a><{$com.content}>
+	                            </div> -->
+							<!-- </div> -->
+							
+					<!-- 			<{if $com.reply_comments}>
+								<div class="reply">
+								<{foreach from=$com.reply_comments item=rcom}>
+								<div class="comment-reply">
+									<span class="gre">回复 <{$rcom.nick}> 于 <{$rcom.time}></span>
+									<div class="replycontent">
+	                                	<em>
+	                                 <{$rcom.content}>
+	                                	</em>
+	                                </div>
+								</div>
+								<{/foreach}>
+									</div>
+								<{/if}> -->
+						
+			<!-- 			</li>
+						<{foreachelse}>
+						<li>无任何评论信息！</li>
+						<{/foreach}>
+					</ul>
+					<div align="right">
+                    <{$showpage}>
+					</div>
+
+	              </div> -->
+
+			    <{/if}>
+					
+			
+	  	    </div>
+		</div>
+
+		<div class="mainbox-right">
+			<div class="newbox">
+				<div class="newbox-title">最新收录</div>
+				<ul class="newbox-list">
+                	<{foreach from=get_websites(0, <{$cfg.home_new}>) item=new}>
+					<li><span><{$new.web_ctime}></span><a href="<{$new.web_link}>" title="<{$new.web_name}>"><{$new.web_name}></a></li>
+                   	<{/foreach}>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<{include file="footer.html"}>
+
+</body>
+</html>
