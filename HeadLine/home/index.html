@@ -84,8 +84,7 @@
 				<div class="inbox-title"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>最新收录</div>
 				<ul class="clearfix coolbox-inner">
 					<{nocache}>
-					<!--{foreach from=get_websites(0, <{$cfg.home_instat}>, false, 'instat') item=instat}-->
-					<{foreach from=get_websites(0, <{$cfg.home_new}>, true) item=instat}>
+					<{foreach from=get_websites(0, 10, false, 'ctime') item=instat name=new_website}>
 					<a href="<{$instat.web_link}>" title="<{$instat.web_name}>">
 					 <li>
 					   <div class="coolbox-inner-top">
@@ -523,10 +522,10 @@ jQuery(".outBox").slide({ effect:"left" });
 <div class="wrapper">
 <{if $cfg.home_instat > '0'}>
 	<div class="inbox">
-		<div class="inbox-title">人气热榜（实时更新）</div>
+		<div class="inbox-title">点击排行-热站上墙</div>
 		<ul class="clearfix inbox-list">
           	<{nocache}>
-			<{foreach from=get_websites(0, <{$cfg.home_instat}>, false, 'instat') item=instat}>
+			<{foreach from=get_websites(0, <{$cfg.home_instat}>, false, 'views') item=instat name=hot_website}>
 			<a href="<{$instat.web_link}>" title="<{$instat.web_name}>">
              <li>
 			   <div class="inbox-list-top">
